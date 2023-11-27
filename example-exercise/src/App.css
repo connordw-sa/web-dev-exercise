@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.banner {
+  > img {
+    height: 300px;
+    object-fit: cover;
+  }
+  > h1 {
+    margin: 100px 0 0 200px;
+  }
+}
+
+& h2 {
+  padding: 50px;
+}
+
+.sermons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    margin: 20px;
+    & audio {
+      width: 250px;
+    }
+  }
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
