@@ -1,4 +1,5 @@
 export default function Banner({ bannerData }) {
+  //destructuring banner + loading
   const { Image, Title, Description } = bannerData;
   if (!bannerData) {
     return <p>Loading...</p>;

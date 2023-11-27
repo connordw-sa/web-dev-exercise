@@ -8,7 +8,7 @@ export default function Sermons() {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Empty dependancy array on the useEffect so it only renders once
-  // I removed the fetch for the audio due to CORS block, and I couldn't get a proxy to work
+  // destructuring return object to get array I need
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,14 +32,14 @@ export default function Sermons() {
 
   // conditional to check if data exists before applying slice and filter + removing and returning
   // first object in array since its properties seem more like a welcome message/banner
-  const itemsPerPage = 10;
   const itemWithId1 = data && data.find((item) => item.Id === 1);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  // I didn't want to use an npm package for pagination but I did loosely follow a guide
+  const itemsPerPage = 10;
+  const lastItem = currentPage * itemsPerPage;
+  const firstItem = lastItem - itemsPerPage;
   const currentItems = data
-    ? data
-        .slice(indexOfFirstItem, indexOfLastItem)
-        .filter((item) => item.Id !== 1)
+    ? data.slice(firstItem, lastItem).filter((item) => item.Id !== 1)
     : [];
   const totalPages = Math.ceil(data && data.length / itemsPerPage);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);

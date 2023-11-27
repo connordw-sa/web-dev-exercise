@@ -1,11 +1,13 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 
+// Loading state cause there's a lot of items
 export default function SingleSermon({ sermonData }) {
   if (!sermonData) {
     return <p>Loading...</p>;
   }
 
+  // destructuring sermon
   const { Image, Title, Description, Audio, Category, CreateDate } = sermonData;
 
   return (
